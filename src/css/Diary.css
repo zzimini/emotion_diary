@@ -1,0 +1,78 @@
+/* 페이지 전체 컨테이너 */
+.Diary {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 80px 24px 40px;  /* 헤더 공간 확보 */
+  background-color: #fffaf0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+  font-family: 'Jua', sans-serif;
+  color: #5d4037;
+  box-sizing: border-box;
+}
+
+/* 헤더 제목은 별도로 사용 시 (예: Header 컴포넌트에서 타이틀 전달 시) */
+.Diary h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 28px;
+}
+
+/* 감정 이미지와 텍스트를 수평 정렬 */
+.Diary .emotion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.Diary .emotion img {
+  width: 48px;
+  height: 48px;
+}
+
+/* 카드 스타일 */
+.Diary_card {
+  background-color: #fff8e1;
+  border: 2px solid #ffe0b2;
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 24px;
+  box-shadow: 0 2px 8px rgba(255, 204, 128, 0.3);
+}
+
+/* 날짜 */
+.Diary_date {
+  font-size: 16px;
+  color: #a1887f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 감정 */
+.Diary_emotion_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.Diary_emotion_wrapper img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+}
+
+.Diary_emotion_wrapper p {
+  font-size: 20px;
+  color: #5d4037;
+}
+
+/* 내용 */
+.Diary_content {
+  font-size: 20px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  text-align: left;
+  margin-top: 12px;
+  word-break: break-word;
+}

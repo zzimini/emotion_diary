@@ -1,10 +1,12 @@
 import React, { createContext, useReducer, useRef, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import New from './pages/New';
 import Edit from './pages/Edit';
 import Diary from './pages/Diary';
+import NavBar from './component/NavBar';
+import Main from './pages/Main'; // ✅ 메인 페이지 import
 
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
@@ -26,7 +28,6 @@ function diaryReducer(state, action) {
   }
 }
 
-// 초기 더미 데이터 (최초 진입 시 참고용)
 const mockData = [
   {
     id: 0,
@@ -52,30 +53,25 @@ function App() {
   const [data, dispatch] = useReducer(diaryReducer, []);
   const idRef = useRef(0);
 
-  // ✅ 로컬스토리지에서 초기 데이터 불러오기
   useEffect(() => {
-    const localData = localStorage.getItem("diary");
+    const localData = localStorage.getItem('diary');
     if (localData) {
       const diaryList = JSON.parse(localData);
       if (diaryList.length > 0) {
         diaryList.sort((a, b) => b.id - a.id);
         idRef.current = diaryList[0].id + 1;
-        dispatch({ type: "INIT", data: diaryList });
+        dispatch({ type: 'INIT', data: diaryList });
         return;
       }
     }
-
-    // 로컬스토리지에 데이터 없을 경우, mockData 사용
-    dispatch({ type: "INIT", data: mockData });
+    dispatch({ type: 'INIT', data: mockData });
     idRef.current = mockData.length;
   }, []);
 
-  // ✅ 데이터가 바뀔 때마다 localStorage에 저장
   useEffect(() => {
-    localStorage.setItem("diary", JSON.stringify(data));
+    localStorage.setItem('diary', JSON.stringify(data));
   }, [data]);
 
-  // createDiary
   const createDiary = (date, content, emotion) => {
     dispatch({
       type: 'CREATE',
@@ -88,15 +84,10 @@ function App() {
     });
   };
 
-  // deleteDiary
   const deleteDiary = (targetId) => {
-    dispatch({
-      type: 'DELETE',
-      targetId,
-    });
+    dispatch({ type: 'DELETE', targetId });
   };
 
-  // updateDiary
   const updateDiary = (id, date, content, emotion) => {
     dispatch({
       type: 'UPDATE',
@@ -114,14 +105,35 @@ function App() {
       <DiaryDispatchContext.Provider value={{ createDiary, deleteDiary, updateDiary }}>
         <div className="App">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/new" element={<New />} />
-            <Route path="/diary/:id" element={<Diary />} />
-            <Route path="/edit/:id" element={<Edit />} />
+            {/* ✅ / → /main 으로 이동 */}
+            <Route path="/" element={<Navigate to="/main" />} />
+
+            {/* ✅ 메인 서비스 페이지 */}
+            <Route path="/main" element={<Main />} />
+
+            {/* ✅ 감정일기 서비스 */}
+            <Route path="/diary" element={<LayoutWithNav />}>
+              <Route index element={<Home />} />
+              <Route path="new" element={<New />} />
+              <Route path=":id" element={<Diary />} />
+              <Route path="edit/:id" element={<Edit />} />
+            </Route>
           </Routes>
         </div>
       </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
+  );
+}
+
+// ✅ NavBar 포함된 레이아웃
+function LayoutWithNav() {
+  return (
+    <>
+      <NavBar />
+      <main style={{ paddingTop: '60px' }}>
+        <Outlet />
+      </main>
+    </>
   );
 }
 

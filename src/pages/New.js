@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Editor from "../component/Editor";
 import Header from "../component/Header";
 import { DiaryDispatchContext } from "../App";
-import { setPageTitle } from "../util"; // ✅ 타이틀 설정 함수 import
+import { setPageTitle } from "../util"; 
 
 const New = () => {
   const { createDiary } = useContext(DiaryDispatchContext);

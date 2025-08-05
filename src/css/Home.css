@@ -113,3 +113,10 @@
 .diary_btn button:hover {
   background-color: #ffca28;
 }
+.search_input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #e5b459;
+  border-radius: 5px;
+  margin: 0 10px;
+}

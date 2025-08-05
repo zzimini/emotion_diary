@@ -1,0 +1,41 @@
+/* src/css/Main.css */
+.Main {
+  text-align: center;
+  padding: 40px;
+  font-family: 'Jua', sans-serif;
+}
+
+.main-title {
+  font-size: 36px;
+  color: #5d4037;
+  margin-bottom: 10px;
+}
+
+.main-sub {
+  font-size: 18px;
+  color: #8d6e63;
+  margin-bottom: 40px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background-color: #fff8e1;
+  border: 2px solid #ffe0b2;
+  border-radius: 12px;
+  padding: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  background-color: #ffecb3;
+}

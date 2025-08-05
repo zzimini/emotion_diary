@@ -29,8 +29,13 @@ const Home = () => {
   };
 
   const handleNewDiary = () => {
-    navigate("/new");
+    navigate("/diary/new");
   };
+
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const handleSearchChange = (e) => {
+    setSearchKeyword(e.target.value);
+  }
 
   useEffect(() => {
   // 🔥 페이지 타이틀 설정
@@ -70,54 +75,71 @@ const Home = () => {
             <option value="oldest">오래된 순</option>
           </select>
 
+          {/* 🔍 검색창 추가 */}
+          <input
+            type="text"
+            value={searchKeyword}
+            onChange={handleSearchChange}
+            placeholder="내용 검색"
+            className="search_input"
+          />
+
           <button onClick={handleNewDiary} className="new_btn">
             새 일기 쓰기
           </button>
         </div>
 
         <section>
-          {filteredData.length === 0 ? (
-            <p style={{ textAlign: "center", marginTop: "2rem" }}>
-              해당 월의 일기가 없습니다.
-            </p>
-          ) : (
-            <ul className="diary_list">
-              {filteredData.map((item) => {
-                const emotionItem = emotionList.find(e => e.id === item.emotion);
+  {
+    filteredData.filter((item) =>
+      item.content.toLowerCase().includes(searchKeyword.toLowerCase())
+    ).length === 0 ? (
+      <p style={{ textAlign: "center", marginTop: "2rem" }}>
+        해당 월의 일기가 없습니다.
+      </p>
+    ) : (
+      <ul className="diary_list">
+        {filteredData
+          .filter((item) =>
+            item.content.toLowerCase().includes(searchKeyword.toLowerCase())
+          )
+          .map((item) => {
+            const emotionItem = emotionList.find((e) => e.id === item.emotion);
 
-                return (
-                  <li key={item.id} className="diary_item">
-                    {/* 감정 이미지 */}
-                    <div className="diary_emotion">
-                      <img src={emotionItem.img} alt={emotionItem.name} />
-                      <p>{emotionItem.name}</p>
-                    </div>
+            return (
+              <li key={item.id} className="diary_item">
+                {/* 감정 이미지 */}
+                <div className="diary_emotion">
+                  <img src={emotionItem.img} alt={emotionItem.name} />
+                  <p>{emotionItem.name}</p>
+                </div>
 
-                    {/* 내용 */}
-                    <div
-                      className="diary_content"
-                      onClick={() => navigate(`/diary/${item.id}`)}
-                    >
-                      <h4>{new Date(item.date).toLocaleDateString()}</h4>
-                      <p className="content_preview">
-                        {item.content.length > 50
-                          ? item.content.slice(0, 50) + "..."
-                          : item.content}
-                      </p>
-                    </div>
+                {/* 내용 */}
+                <div
+                  className="diary_content"
+                  onClick={() => navigate(`/diary/${item.id}`)}
+                >
+                  <h4>{new Date(item.date).toLocaleDateString()}</h4>
+                  <p className="content_preview">
+                    {item.content.length > 50
+                      ? item.content.slice(0, 50) + "..."
+                      : item.content}
+                  </p>
+                </div>
 
-                    {/* 수정 버튼 */}
-                    <div className="diary_btn">
-                      <button onClick={() => navigate(`/edit/${item.id}`)}>
-                        ✏ 수정
-                      </button>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </section>
+                {/* 수정 버튼 */}
+                <div className="diary_btn">
+                  <button onClick={() => navigate(`/diary/edit/${item.id}`)}>
+                    ✏ 수정
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+      </ul>
+    )
+  }
+</section>
       </div>
     </>
   );
