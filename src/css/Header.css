@@ -1,0 +1,59 @@
+.Header {
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e2e2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.Header > div {
+  display: flex;
+  align-items: center;
+}
+
+/* 버튼에 폰트 적용 */
+.Header button {
+  font-family: "jua", cursive;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #5d4037;
+}
+
+.nav_box {
+  background-color: #f8e7ce;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+
+/* 좌측 (◀) */
+.Header__left {
+  width: 25%;
+  justify-content: flex-start;
+}
+
+/* 중앙 타이틀 (yyyy년 mm월) */
+.Header__center {
+  width: 50%;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #3e2723;
+  font-family: "jua", cursive;
+}
+
+/* 우측 (▶) */
+.Header__right {
+  width: 25%;
+  justify-content: flex-end;
+}

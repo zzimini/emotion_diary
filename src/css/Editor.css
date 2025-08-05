@@ -1,0 +1,142 @@
+/* 전체 에디터 영역 */
+.Editor {
+  max-width: 740px; /* 이전보다 넓힘 */
+  margin: 50px auto;
+  padding: 32px;
+  background-color: #fffaf0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+  font-family: 'Jua', sans-serif;
+  color: #5d4037;
+}
+
+/* 각 입력 섹션 간격 */
+.Editor .editor_section {
+  margin-bottom: 32px;
+}
+
+/* 섹션 제목 */
+.Editor h4 {
+  font-size: 22px;
+  font-weight: normal;
+  color: #d84315;
+  margin-bottom: 10px;
+}
+
+/* 날짜와 일기 입력 필드 */
+.Editor input,
+.Editor textarea {
+  border: 2px solid #ffe0b2;
+  border-radius: 12px;
+  background-color: #fff8e1;
+  padding: 16px;
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: 0.2s ease-in-out;
+}
+.Editor input.tall {
+  height: 500px; /* 또는 70px, 80px 등 원하는 높이 */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+
+.Editor input:focus,
+.Editor textarea:focus {
+  outline: none;
+  border-color: #ffcc80;
+  background-color: #fff3e0;
+}
+
+/* 일기 입력칸 (한 줄 input으로 가정) */
+.Editor input.input_content {
+  font-size: 18px;
+}
+
+/* 버튼 영역 */
+.Editor .editor_btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* 공통 버튼 */
+.Editor .btn {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Jua', sans-serif;
+  transition: 0.2s ease-in-out;
+}
+
+/* 뒤로가기 버튼 */
+.Editor .btn.back {
+  background-color: #ffccbc;
+  color: #5d4037;
+}
+
+/* 작성 완료 버튼 */
+.Editor .btn.submit {
+  background-color: #ffab91;
+  color: #5d4037;
+}
+
+/* 버튼 hover 효과 */
+.Editor .btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* 감정 리스트가 들어올 wrapper */
+.Editor .emotion_list_wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 감정 선택 리스트 */
+.emotion_list_wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 감정 아이템 */
+.emotion_item {
+  width: 100px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #fff3e0;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.emotion_item:hover {
+  transform: scale(1.05);
+}
+
+.emotion_item img {
+  width: 48px;
+  height: 48px;
+}
+
+.emotion_item span {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+/* 선택된 감정 강조 */
+.emotion_item.selected {
+  background-color: #ffccbc;
+  border: 2px solid #ff5722;
+}

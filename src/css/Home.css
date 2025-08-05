@@ -1,0 +1,115 @@
+/* Home.css */
+.Home {
+  max-width: 740px;
+  margin: 50px auto;
+  padding: 32px;
+  background-color: #fffaf0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+  font-family: 'Jua', sans-serif;
+  color: #5d4037;
+}
+
+/* 컨트롤 박스 */
+.Home_control_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.Home_control_box select {
+  padding: 12px 16px;
+  border: 2px solid #ffe0b2;
+  border-radius: 12px;
+  background-color: #fff8e1;
+  font-size: 16px;
+  font-family: 'Jua', sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.Home_control_box .new_btn {
+  background-color: #ffcd6f;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Jua', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.Home_control_box .new_btn:hover {
+  background-color: #ffb347;
+}
+
+/* 리스트 wrapper */
+.diary_list {
+  padding: 0;
+  list-style: none;
+}
+
+/* 각 일기 항목을 가로로 배치 */
+.diary_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff8e1;
+  border: 2px solid #ffe0b2;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  font-family: 'Jua', sans-serif;
+}
+
+/* 감정 */
+.diary_emotion {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.diary_emotion img {
+  width: 80px;
+  height: 80px;
+}
+.diary_emotion p {
+  font-size: 14px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px; /* 또는 100%로도 테스트 가능 */
+}
+
+/* 일기 내용 (가운데) */
+.diary_content {
+  flex: 1;
+  margin: 0 20px;
+  cursor: pointer;
+}
+.diary_content h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.diary_content .content_preview {
+  font-size: 15px;
+  color: #5d4037;
+  word-break: keep-all;
+}
+
+/* 수정 버튼 */
+.diary_btn button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffe082;
+  font-family: 'Jua', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.diary_btn button:hover {
+  background-color: #ffca28;
+}
